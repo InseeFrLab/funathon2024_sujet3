@@ -193,7 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>On va pouvoir tester l’API, mais avant toute chose, prendre le temps de jeter un coup d’oeil à la documentation de l’API (<a href="https://docs.traveltime.com/api/overview/introduction">ici</a>). Se rendre sur le <a href="https://playground.traveltime.com/routes"><em>playground</em></a> de l’API pour se familiariser avec son fonctionnement. Afin de vérifier que nous arrivons à communiquer avec l’API, nous allons effectuer la même requête présentée dans le playground directement dans notre console R.</p></li>
 <li><p>On initialise le client.</p></li>
 </ol>
-<div id="f6c937da" class="cell" data-execution_count="1">
+<div id="de631e4d" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Cliquer pour voir la réponse</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-overflow-scroll code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> FlightRadar24 <span class="im">import</span> FlightRadar24API</span>
@@ -203,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="3" type="1">
 <li>Nombre de compagnies aériennes.</li>
 </ol>
-<div id="ff4ffeb3" class="cell" data-execution_count="2">
+<div id="3c46e1a4" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Cliquer pour voir la réponse</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-overflow-scroll code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>airlines <span class="op">=</span> fr_api.get_airlines()</span>
@@ -216,7 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="4" type="1">
 <li>Nombre de zones.</li>
 </ol>
-<div id="fcaed2b6" class="cell" data-execution_count="3">
+<div id="57e1de6e" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Cliquer pour voir la réponse</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-overflow-scroll code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>zones <span class="op">=</span> fr_api.get_zones()</span>
@@ -229,7 +229,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="5" type="1">
 <li>Vols correspondant à un appareil, une compagnies et une zone géographique.</li>
 </ol>
-<div id="91fa59e1" class="cell" data-execution_count="4">
+<div id="62237910" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Cliquer pour voir la réponse</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-overflow-scroll code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>airline_icao <span class="op">=</span> <span class="st">"UAE"</span></span>
@@ -253,7 +253,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="6" type="1">
 <li>Configuration du client</li>
 </ol>
-<div id="bbcd655b" class="cell" data-execution_count="5">
+<div id="f6e55b18" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Cliquer pour voir la réponse</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-overflow-scroll code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>flight_tracker <span class="op">=</span> fr_api.get_flight_tracker_config()</span>
@@ -287,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>callsign</li>
 <li>airline_icao</li>
 </ul>
-<div id="87e71e97" class="cell" data-execution_count="6">
+<div id="3ec11d00" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Cliquer pour voir la réponse</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-overflow-scroll code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>flights[<span class="dv">0</span>].<span class="bu">id</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
