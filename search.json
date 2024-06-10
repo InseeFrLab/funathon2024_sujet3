@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Reconstruction de l’interface utilisateur de FlightRadar24",
+    "section": "",
+    "text": "Flightradar24 est un service de suivi des vols qui fournit des informations en temps réel sur des milliers d’avions dans le monde entier. Le site Internet propose une visualisation interactive des vols en cours à chaque instant, comportant des informations issues de plusieurs sources sur chaque vol. Des données de position sont agrégées avec des données sur les horaires et le statut des vols provenant des compagnies aériennes et des aéroports.\n\n\n\nSite Internet FlightRadar24\n\n\nFlightradar24 vend la plupart de ces données disponibles en temps réel, ainsi que des fichiers d’historiques de vols. Certaines données en temps réel sont toutefois disponibles en accès libre. Il est possible de récupérer ces données de manière programmatique en utilisant par exemple cette librarie Python.\nAvec ce sujet, nous vous proposons de reconstruire une interface utilisateur qui se rapproche de celle du site FlightRadar24 avec Python.\n\n\n\nReconstruction de l’interface utilisateur FlightRadar24\n\n\nAinsi, ce sujet vous permettra :\n\nDe récupérer les données de FlightRadar24 avec interface de programmation Python;\nDéveloppement d’un site interactif avec Dash, un framework Python réputé servant à construire des applications de visualisation de données."
+  },
+  {
+    "objectID": "index.html#récupérer-le-projet-avec-git",
+    "href": "index.html#récupérer-le-projet-avec-git",
+    "title": "Reconstruction de l’interface utilisateur de FlightRadar24",
+    "section": "2.1 Récupérer le projet avec Git ",
+    "text": "2.1 Récupérer le projet avec Git \nPour se lancer dans le sujet, commencer par ouvrir un service Vscode-python (par exemple), en modifiant l’onglet Networking de la configuration (cocher la case “Enable a custom service port”). Dans le service, cloner le projet depuis un Terminal avec la commande\ngit clone https://github.com/InseeFrLab/funathon2024_sujet3.git\nLe projet a la structure suivante :\n\nLes fichiers .qmd ainsi que le fichier _quarto.yaml ont servi à la construction de ce site;\n…\nDans le répertoire app se trouve une version d’une application de visualisation."
+  },
+  {
+    "objectID": "index.html#installation-les-librairies-nécessaires",
+    "href": "index.html#installation-les-librairies-nécessaires",
+    "title": "Reconstruction de l’interface utilisateur de FlightRadar24",
+    "section": "2.2 Installation les librairies nécessaires",
+    "text": "2.2 Installation les librairies nécessaires\nPour progresser, il vous faudra installer quelques librairies qui sont listées dans le fichier requirements.txt. Pour ce faire, depuis un Terminal, exécutez la commande\npip install -r requirements.txt"
+  },
+  {
+    "objectID": "1-api.html",
+    "href": "1-api.html",
+    "title": "Interaction avec l’API FlightRadar24",
+    "section": "",
+    "text": "Exercice 1 : Se familiariser avec l’API de TravelTime\n\n\n\n\n\n\nOn va pouvoir tester l’API, mais avant toute chose, prendre le temps de jeter un coup d’oeil à la documentation de l’API (ici). Se rendre sur le playground de l’API pour se familiariser avec son fonctionnement. Afin de vérifier que nous arrivons à communiquer avec l’API, nous allons effectuer la même requête présentée dans le playground directement dans notre console R.\nOn initialise le client.\n\n\n\nCliquer pour voir la réponse\nfrom FlightRadar24 import FlightRadar24API\nfr_api = FlightRadar24API()\n\n\n\nNombre de compagnies aériennes.\n\n\n\nCliquer pour voir la réponse\nairlines = fr_api.get_airlines()\nlen(airlines)\n\n\n2145\n\n\n\nNombre de zones.\n\n\n\nCliquer pour voir la réponse\nzones = fr_api.get_zones()\nlen(zones)\n\n\n9\n\n\n\nVols correspondant à un appareil, une compagnies et une zone géographique.\n\n\n\nCliquer pour voir la réponse\nairline_icao = \"UAE\"\naircraft_type = \"B77W\"\n\n# You may also set a custom region, such as: bounds = \"73,-12,-156,38\"\nzone = fr_api.get_zones()[\"northamerica\"]\nbounds = fr_api.get_bounds(zone)\n\nemirates_flights = fr_api.get_flights(\n    aircraft_type = aircraft_type,\n    airline = airline_icao,\n    bounds = bounds\n)\nlen(emirates_flights)\n\n\n1\n\n\n\nConfiguration du client\n\n\n\nCliquer pour voir la réponse\nflight_tracker = fr_api.get_flight_tracker_config()\nflight_tracker.limit = 10\nfr_api.set_flight_tracker_config(flight_tracker)\n\nflights = fr_api.get_flights()  # Returns only 10 flights\n\n\n\nInformations sur un vol :\n\n\nlatitude\nlongitude\nid\nicao_24bit\nheading\naltitude\nground_speed\nsquawk\naircraft_code\nregistration\ntime\norigin_airport_iata\ndestination_airport_iata\nnumber\nairline_iata\non_ground\nvertical_speed\ncallsign\nairline_icao\n\n\n\nCliquer pour voir la réponse\nflights[0].id\n\n\n'356a8712'"
+  }
+]
