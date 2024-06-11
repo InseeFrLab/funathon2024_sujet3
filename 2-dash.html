@@ -200,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>Emplacement du lien pour accéder à l’application Dash</figcaption>
 </figure>
 </div>
-<div id="718262fc" class="cell" data-execution_count="1">
+<div id="baada986" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-overflow-scroll code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> Dash, html, dcc, callback, Output, Input</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -246,7 +246,7 @@ La fonction est décorée avec <code>@callback</code>, une <a href="https://dash
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<i class="bi bi-book"></i> Exercice 2 : Première application de visualisation
+<i class="bi bi-book"></i> Exercice 3 : Première application de visualisation
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -256,7 +256,7 @@ La fonction est décorée avec <code>@callback</code>, une <a href="https://dash
 <ol type="1">
 <li>Le répertoire <code>intermediate_app</code> comporte deux fichiers: <code>main.py</code>, qui contient le code de l’application Dash et <code>utils.py</code> qui contient une fonction utilitaire non encore implémentée. Cette fonction utilitaire <code>fetch_flight_data</code> prend en entrée un client FlightRadar, un code ICAO de compagnie aérienne, un type d’aéronef et une zone géographique. Elle renvoie la liste des vols en cours correspondant aux arguments donnés en entrée, où un vol est représenté par un simple dictionnaire avec trois clés <code>'latitude'</code>, <code>'longitude'</code> et <code>'id'</code>. Implémenter cette fonction.</li>
 </ol>
-<div id="07c453b5" class="cell" data-execution_count="2">
+<div id="9a307fe3" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Cliquer pour voir la réponse</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-overflow-scroll code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fetch_flight_data(</span>
@@ -301,7 +301,7 @@ La fonction est décorée avec <code>@callback</code>, une <a href="https://dash
 </ol>
 <p>Le second composant est un <a href="https://dash.plotly.com/dash-core-components/interval"><code>dcc.Interval</code></a> qui va permettre d’initier un callback périodiquement. Ce composant contient un attribut <code>n_intervals</code> (initialisé à 0 ici) qui est incrémenté à interval de temps régulier, toutes les <code>interval</code> millisecondes.</p>
 <p>De fait, il faut définir la fonction <code>update_graph_live</code> comme un callback. Ecrire un décorateur pour que la fonction soit exécutée à chaque fois que l’attribut <code>n_intervals</code> du composant <code>dcc.Interval</code> est incrémenté, et de sorte à ce que la sortie de la fonction modifie l’attribut <code>children</code> du composant <code>dash_leaflet.MapContainer</code>.</p>
-<div id="b1174dcd" class="cell" data-execution_count="3">
+<div id="efbb0c43" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Cliquer pour voir la réponse</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-overflow-scroll code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="at">@app.callback</span>(</span>
@@ -314,7 +314,7 @@ La fonction est décorée avec <code>@callback</code>, une <a href="https://dash
 <li>On souhaite maintenant modifier la fonction <code>update_graph_live</code> pour que sa sortie modifie la carte affichée de manière adaptée. Pour le moment, à chaque fois que la fonction est appelée, elle renvoie une liste contenant un fond de carte et un marqueur par vol récupéré grâce à la fonction <code>fetch_flight_data</code>, placé aux latitude et longitude 0.</li>
 </ol>
 <p>Mettre à jour la liste renvoyée par la fonction <code>update_graph_live</code> pour que les marqueurs soient placés là où se situent les avions des vols, et pour que l’identifiant d’un vol s’affiche lorsqu’on clique sur le marqueur associé.</p>
-<div id="29e8be1b" class="cell" data-execution_count="4">
+<div id="6e759899" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Cliquer pour voir la réponse</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-overflow-scroll code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>children <span class="op">=</span> default_map_children <span class="op">+</span> [</span>
