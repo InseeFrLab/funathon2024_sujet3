@@ -146,7 +146,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#initialisation-du-projet" id="toc-initialisation-du-projet" class="nav-link" data-scroll-target="#initialisation-du-projet"><span class="header-section-number">2</span> Initialisation du projet</a>
   <ul class="collapse">
   <li><a href="#récupérer-le-projet-avec-git" id="toc-récupérer-le-projet-avec-git" class="nav-link" data-scroll-target="#récupérer-le-projet-avec-git"><span class="header-section-number">2.1</span> Récupérer le projet avec <code>Git</code> <i class="fa-brands fa-git-alt" aria-label="git-alt"></i></a></li>
-  <li><a href="#installation-les-librairies-nécessaires" id="toc-installation-les-librairies-nécessaires" class="nav-link" data-scroll-target="#installation-les-librairies-nécessaires"><span class="header-section-number">2.2</span> Installation les librairies nécessaires</a></li>
+  <li><a href="#installation-des-librairies-nécessaires" id="toc-installation-des-librairies-nécessaires" class="nav-link" data-scroll-target="#installation-des-librairies-nécessaires"><span class="header-section-number">2.2</span> Installation des librairies nécessaires</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/InseeFrLab/funathon2024_sujet3/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Modifier cette page</a></li><li><a href="https://github.com/InseeFrLab/funathon2024_sujet3/issues/new" class="toc-action"><i class="bi empty"></i>Faire part d'un problème</a></li></ul></div></nav>
@@ -211,37 +211,58 @@ ul.task-list li input[type="checkbox"] {
 <figcaption>Reconstruction de l’interface utilisateur FlightRadar24</figcaption>
 </figure>
 </div>
-<p>Ainsi, ce sujet vous permettra :</p>
+<p>Ainsi, ce sujet vous permettra:</p>
 <ul>
 <li>De récupérer les données de FlightRadar24 avec interface de programmation Python;</li>
-<li>Développement d’un site interactif avec <a href="https://dash.plotly.com/">Dash</a>, un framework Python réputé servant à construire des applications de visualisation de données.</li>
+<li>De développer un site interactif avec <a href="https://dash.plotly.com/">Dash</a>, un framework Python réputé servant à construire des applications de visualisation de données;</li>
+<li>De voir comment déployer facilement une application de visualisation dans un environnement Cloud.</li>
 </ul>
 </section>
 <section id="déroulement-du-sujet" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Déroulement du sujet</h1>
-<p>Ce sujet comporte 4 parties :</p>
-<ol type="1">
+<p>Ce sujet comporte 5 parties:</p>
+<ul>
 <li>Dans la première partie, nous explorerons les données disponibles via une <a href="https://github.com/JeanExtreme002/FlightRadarAPI">interface de programmation</a>;</li>
 <li>Dans la deuxième partie, nous écrirons une première version de l’application de visualisation;</li>
-<li>Dans la troisième partie, nous raffinerons l’application;</li>
-<li>Dans une quatrième partie optionnelle, nous verrons comment déployer l’application sur le <a href="https://datalab.sspcloud.fr/">SSP Cloud</a> et la rendre accessible depuis Internet.</li>
-</ol>
+<li>Dans les troisième et quatrième parties, nous raffinerons l’application;</li>
+<li>Dans la cinquième partie, nous verrons comment déployer l’application sur le <a href="https://datalab.sspcloud.fr/">SSP Cloud</a> et la rendre accessible depuis Internet.</li>
+</ul>
 </section>
 <section id="initialisation-du-projet" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Initialisation du projet</h1>
 <section id="récupérer-le-projet-avec-git" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="récupérer-le-projet-avec-git"><span class="header-section-number">2.1</span> Récupérer le projet avec <code>Git</code> <i class="fa-brands fa-git-alt" aria-label="git-alt"></i></h2>
-<p>Pour se lancer dans le sujet, commencer par ouvrir un service <a href="https://datalab.sspcloud.fr/launcher/ide/vscode-python">Vscode-python</a> (par exemple), en modifiant l’onglet <em>Networking</em> de la configuration (cocher la case “Enable a custom service port”). Dans le service, cloner le projet depuis un Terminal avec la commande</p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Attention
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Pour se lancer dans le sujet, commencer par ouvrir un service <a href="https://datalab.sspcloud.fr/launcher/ide/vscode-python">Vscode-python</a>. Pour éviter les problèmes plus tard, il faut impérativement modifier deux éléments de configuration du service:</p>
+<ul>
+<li>Dans l’onglet <em>Networking</em> de la configuration, cocher la case “Enable a custom service port”;</li>
+<li>Dans l’onglet <em>Kubernetes</em> de la configuration, changer le rôle de <code>admin</code>.</li>
+</ul>
+</div>
+</div>
+<p>Dans le service créé, cloner le projet depuis un Terminal avec la commande</p>
 <pre><code>git clone https://github.com/InseeFrLab/funathon2024_sujet3.git</code></pre>
-<p>Le projet a la structure suivante :</p>
+<p>Le projet a la structure suivante:</p>
 <ul>
 <li>Les fichiers <code>.qmd</code> ainsi que le fichier <code>_quarto.yaml</code> ont servi à la construction de ce site;</li>
-<li>…</li>
-<li>Dans le répertoire <code>app</code> se trouve une version d’une application de visualisation.</li>
+<li>Le fichier <code>requirements.txt</code> possède toutes les dépendances Python nécessaires pour le sujet;</li>
+<li>Plusieurs versions de l’application, à différents stades du développement, et à modifier lors des exercices sont situées dans les répertoire <code>intermediate_app</code>, <code>better_app</code>, <code>even_better_app</code> et <code>final_app</code>;<br>
+</li>
+<li>Le corrigé (version finale) de l’application se trouve dans le répertoire <code>correction</code>;</li>
+<li>Le fichier <code>Dockerfile</code> et les fichiers du répertoire <code>kubernetes</code> serviront au déploiement de l’application.</li>
 </ul>
 </section>
-<section id="installation-les-librairies-nécessaires" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="installation-les-librairies-nécessaires"><span class="header-section-number">2.2</span> Installation les librairies nécessaires</h2>
+<section id="installation-des-librairies-nécessaires" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="installation-des-librairies-nécessaires"><span class="header-section-number">2.2</span> Installation des librairies nécessaires</h2>
 <p>Pour progresser, il vous faudra installer quelques librairies qui sont listées dans le fichier <code>requirements.txt</code>. Pour ce faire, depuis un Terminal, exécutez la commande</p>
 <pre><code>pip install -r requirements.txt</code></pre>
 
