@@ -156,7 +156,47 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Dans cette partie on propose de déployer l’application sur le SSP Cloud et de la rendre accessible depuis Internet.</p>
+<p>Dans cette partie on propose de déployer l’application sur le SSP Cloud et de la rendre accessible depuis Internet. L’exercice constitue une introduction à la mise en production d’applications dans un environnement Cloud. Pour aller plus loin, n’hésitez pas à consulter <a href="https://ensae-reproductibilite.github.io/website/">cet excellent cours</a>.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<i class="bi bi-book"></i> Exercice 7: Déploiement de l’application Dash
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Pour déployer son application, la première étape consiste à la <a href="https://ensae-reproductibilite.github.io/website/chapters/portability.html#les-conteneurs">conteneuriser</a>, ce qui signifie la mettre dans une sorte de boîte virtuelle contenant tout ce dont l’application a besoin pour fonctionner. Le conteneur sépare l’application de son environnement extérieur, ce qui permet d’éviter les conflits avec d’autres applications ou dépendances sur le même système. Puisque le conteneur contient tout ce dont l’application a besoin (comme les bibliothèques et les dépendances), l’application peut être déplacée et exécutée sur n’importe quel système qui supporte les conteneurs, sans se soucier des différences entre ces systèmes.</li>
+</ol>
+<p>Ainsi, conteneuriser une application permet de la rendre plus facile à déployer, plus fiable et plus portable (en utilisant efficacement les ressources du système). Docker est un outil populaire pour créer et gérer des conteneurs. Le fichier <code>Dockerfile</code> contient le code nécessaire pour construire l’image Docker de l’application finale située dans le répertoire <code>correction</code>. Vous pouvez consulter la <a href="https://docs.docker.com/build/building/packaging/">documentation Docker</a> pour tenter de comprendre comment l’image est construite.</p>
+<p>Nous ne vous demandons pas de construire l’image vous-même, l’image du répertoire <code>correction</code> est déjà publique sur <a href="https://hub.docker.com/r/inseefrlab/funathon2024-sujet3/">Dockerhub</a> et peut-être utilisée pour déployer l’application.</p>
+<ol start="2" type="1">
+<li>L’image peut à présent être récupérée et déployée. Dans notre cas, on va la déployer sur un cluster Kubernetes, l’infrastructure sous-jacente du SSP Cloud. Le fonctionnement de Kubernetes est technique et nous ne rentrerons pas dans les détails ici. Les fichiers nécessaires au déploiement se trouvent dans le répertoire <code>kubernetes</code>.</li>
+</ol>
+<p>Afin de déployer l’application, suivre les instructions suivantes:</p>
+<ul>
+<li>Inspecter les fichiers <code>kubernetes/deployment.yml</code>, <code>kubernetes/service.yml</code> et <code>kubernetes/ingress.yml</code> et repérer les éléments suivants:
+<ul>
+<li>L’emplacement où est spécifié l’image à déployer;</li>
+<li>L’emplacement où est spécifié les ressources computationnelles allouées;</li>
+<li>L’emplacement où est spécifié l’URL à laquelle sera exposée l’application sur Internet. La modifier (à 2 reprises) pour y indiquer une adresse personalisée pour le déploiement. Seule contrainte, elle doit être de la forme <code>*.lab.sspcloud.fr</code>;</li>
+</ul></li>
+<li>Ouvrir un Terminal;</li>
+<li>Se placer à la racine du projet;</li>
+<li>Appliquer les contrats Kubernetes avec la commande <code>kubectl apply -f kubernetes/</code>;</li>
+<li>Vérifier le lancement du conteneur avec la commande <code>watch kubectl get pods</code>. Le nom associé devrait être de la forme <code>flightradar-ui-*</code>;</li>
+<li>Attendre que le conteneur obtienne le statut <code>Running</code>.</li>
+</ul>
+<ol start="3" type="1">
+<li>Entrer dans un navigateur l’URL spécifiée dans le fichier <code>kubernetes/ingress.yaml</code>, et vérifier que l’application fonctionne correctement !</li>
+</ol>
+</div>
+</div>
+</div>
 
 
 
