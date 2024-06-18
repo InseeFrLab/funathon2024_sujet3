@@ -121,27 +121,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="./index.html"> 
-<span class="menu-text">Présentation du sujet</span></a>
+<span class="menu-text">Introduction</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./1-api.html"> 
-<span class="menu-text">API FlightRadar24</span></a>
+<span class="menu-text">1 Manipuler API FlightRadar24</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./2-dash.html"> 
-<span class="menu-text">Première version de l’UI</span></a>
+<span class="menu-text">2 Première version de l’UI</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./3-advanced.html"> 
-<span class="menu-text">Amélioration de l’UI</span></a>
+<span class="menu-text">3 Améliorer l’UI</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./4-final.html" aria-current="page"> 
-<span class="menu-text">Encore des améliorations</span></a>
+<span class="menu-text">4 Améliorer encore l’UI</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./5-deployment.html"> 
-<span class="menu-text">Déploiement</span></a>
+<span class="menu-text">5 Déployer l’UI</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://flightradar-ui-demo.lab.sspcloud.fr"> 
@@ -209,9 +209,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="callout-body-container callout-body">
 <p>Le code pour cet exercice se trouve dans le répertoire <code>even_better_app</code>. Ce code correspond à l’application qui devrait être obtenue à la fin de l’exercice précédent. Pour afficher des informations supplémentaires sur chaque vol, il faut procéder en deux étapes.</p>
 <ol type="1">
-<li>Dans le fichier <code>even_better_app/utils.py</code>, modifier la fonction <code>fetch_flight_data</code> pour inclure davantage d’information dans les dictionnaires de vols.</li>
+<li>Dans le fichier <code>even_better_app/utils.py</code>, modifier la fonction <code>fetch_flight_data</code> pour inclure les information dans les dictionnaires de vols: code IATA des aéroports de départ et d’arrivée, vitesse au sol et type d’avion. <strong>Attention: il ne faut pas utiliser la fonction <code>get_flight_details()</code> car vous atteindriez immédiatement la limite de consultation de l’API Flightradar24.</strong></li>
 </ol>
-<div id="216c5d7f" class="cell" data-execution_count="1">
+<div id="c43d31c2" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Cliquer pour voir la réponse</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-overflow-scroll code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fetch_flight_data(</span>
@@ -245,20 +245,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [</span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        {</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>            <span class="st">"latitude"</span>: flight.latitude,</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>            <span class="st">"longitude"</span>: flight.longitude,</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>            <span class="st">"id"</span>: flight.<span class="bu">id</span>,</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>            <span class="st">"origin_airport_iata"</span>: flight.origin_airport_iata,</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>            <span class="st">"destination_airport_iata"</span>: flight.destination_airport_iata,</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>            <span class="st">"ground_speed"</span>: flight.ground_speed,</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">for</span> flight <span class="kw">in</span> flights</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    ]</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>            <span class="st">"id"</span>: flight.<span class="bu">id</span>,</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>            <span class="st">"aircraft_code"</span>: flight.aircraft_code,</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>            <span class="st">"latitude"</span>: flight.latitude,</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>            <span class="st">"longitude"</span>: flight.longitude,</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>            <span class="st">"origin_airport_iata"</span>: flight.origin_airport_iata,</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>            <span class="st">"destination_airport_iata"</span>: flight.destination_airport_iata,</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>            <span class="st">"ground_speed"</span>: flight.ground_speed,</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">for</span> flight <span class="kw">in</span> flights</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    ]</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <ol start="2" type="1">
-<li>Pour afficher plus d’informations dans l’application, il faut modifier le contenu de la fonction <code>update_graph_live</code> dans <code>even_better_app/main.py</code>, et plus spécifiquement l’argument <code>children</code> du constructeur <code>dl.Marker</code>. Implémenter ce changement.</li>
+<li>Pour afficher plus d’informations dans l’application, il faut modifier le contenu de la fonction <code>update_graph_live</code> dans <code>even_better_app/main.py</code>, et plus spécifiquement l’argument <code>children</code> du constructeur <code>dl.Marker</code>. Ajouter les codes des aéroports de départ et d’arrivée et la vitesse au sol.</li>
 </ol>
-<div id="ab05fe11" class="cell" data-execution_count="2">
+<div id="f4d48091" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Cliquer pour voir la réponse</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-overflow-scroll code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="at">@app.callback</span>(</span>
@@ -276,7 +277,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                    dcc.Markdown(<span class="ss">f'''</span></span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ss">                        **Identifiant du vol**: </span><span class="sc">{</span>flight[<span class="st">'id'</span>]<span class="sc">}</span><span class="ss">.</span></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="ss">                        **Aérport d'origine**: </span><span class="sc">{</span>flight[<span class="st">'origin_airport_iata'</span>]<span class="sc">}</span><span class="ss">.</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="ss">                        **Aéroport d'origine**: </span><span class="sc">{</span>flight[<span class="st">'origin_airport_iata'</span>]<span class="sc">}</span><span class="ss">.</span></span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="ss">                        **Aéroport de destination**: </span><span class="sc">{</span>flight[<span class="st">'destination_airport_iata'</span>]<span class="sc">}</span><span class="ss">.</span></span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
@@ -318,7 +319,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Nous souhaitons d’abord modifier la mise en page de l’application. Modifier <code>final_app/main.py</code> de manière à intégrer dans <code>app.layout</code> une zone incluant un <a href="https://dash.plotly.com/dash-core-components/dropdown">menu déroulant</a>. Ce menu déroulant devra proposer plusieurs options de compagnie aériennes. Pour faciliter la suite, afficher le nom complet de la compagnie dans le menu déroulant mais faire en sorte que l’attribut <code>value</code> soit un code ICAO.</li>
 </ol>
-<div id="4b3730f0" class="cell" data-execution_count="3">
+<div id="71a601b8" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Cliquer pour voir la réponse</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-overflow-scroll code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> html.Div([</span>
@@ -368,9 +369,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 <ol start="2" type="1">
-<li>Toujours dans <code>final_app/main.py</code>, modifier le décorateur callback de la fonction <code>update_graph_live</code> pour ajouter un <code>Input</code> correspondant à la compagnie sélectionnée dans le menu déroulant. Modifier également l’appel de la fonction <code>fetch_flight_data</code> pour que les données de la bonne compagnie soient récupérées.</li>
+<li>Toujours dans <code>final_app/main.py</code>, modifier le décorateur callback de la fonction <code>update_graph_live</code> pour ajouter un <code>Input</code> correspondant à la compagnie sélectionnée dans le menu déroulant. Pour vous aider, vous pouvez relire <a href="https://dash.plotly.com/basic-callbacks">cette page</a>, notamment le point 1.c. Modifier également l’appel de la fonction <code>fetch_flight_data</code> pour que les données de la bonne compagnie soient récupérées.</li>
 </ol>
-<div id="0e8efbd9" class="cell" data-execution_count="4">
+<div id="f163374d" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Cliquer pour voir la réponse</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-overflow-scroll code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="at">@app.callback</span>(</span>
