@@ -213,18 +213,18 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>L’objet de ce sujet est de reconstruire pas à pas l’interface utilisateur de FlightRadar24. Ce faisant, ce sujet vous apprendra trois choses:</p>
 <ul>
-<li>Récupérer les données de FlightRadar24 avec interface de programmation Python;</li>
-<li>Développer un site interactif avec <a href="https://dash.plotly.com/">Dash</a>, un framework Python réputé servant à construire des applications de visualisation de données;</li>
+<li>Récupérer les données de FlightRadar24 avec interface de programmation Python ;</li>
+<li>Développer un site interactif avec <a href="https://dash.plotly.com/">Dash</a>, un framework Python réputé servant à construire des applications de visualisation de données ;</li>
 <li>Déployer facilement une application de visualisation dans un environnement Cloud.</li>
 </ul>
 </section>
 <section id="déroulement-du-sujet" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Déroulement du sujet</h1>
-<p>Ce sujet comporte 5 parties listées dans le bandeau en haut de la page:</p>
+<p>Ce sujet comporte 5 parties listées dans le bandeau en haut de la page :</p>
 <ul>
-<li>Dans la première partie, nous explorerons les données disponibles via une <a href="https://github.com/JeanExtreme002/FlightRadarAPI">interface de programmation</a>;</li>
-<li>Dans la deuxième partie, nous écrirons une première version de l’application de visualisation;</li>
-<li>Dans les troisième et quatrième parties, nous raffinerons l’application;</li>
+<li>Dans la première partie, nous explorerons les données disponibles via une <a href="https://github.com/JeanExtreme002/FlightRadarAPI">interface de programmation</a> ;</li>
+<li>Dans la deuxième partie, nous écrirons une première version de l’application de visualisation ;</li>
+<li>Dans les troisième et quatrième parties, nous raffinerons l’application ;</li>
 <li>Dans la cinquième partie, nous verrons comment déployer l’application sur le <a href="https://datalab.sspcloud.fr/">SSP Cloud</a> et la rendre accessible depuis Internet.</li>
 </ul>
 </section>
@@ -242,22 +242,22 @@ Attention
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Pour se lancer dans le sujet, commencer par ouvrir un service <a href="https://datalab.sspcloud.fr/launcher/ide/vscode-python">Vscode-python</a>. Pour éviter les problèmes plus tard, il faut impérativement modifier deux éléments de configuration du service:</p>
+<p>Pour se lancer dans le sujet, commencer par ouvrir un service <a href="https://datalab.sspcloud.fr/launcher/ide/vscode-python">Vscode-python</a>. Pour éviter les problèmes plus tard, il faut impérativement modifier deux éléments de configuration du service :</p>
 <ul>
-<li>Dans l’onglet <em>Networking</em> de la configuration, cocher la case “Enable a custom service port”;</li>
+<li>Dans l’onglet <em>Networking</em> de la configuration, cocher la case “Enable a custom service port” ;</li>
 <li>Dans l’onglet <em>Kubernetes</em> de la configuration, changer le rôle en <code>admin</code>.</li>
 </ul>
 </div>
 </div>
 <p>Dans le service créé, cloner le projet depuis un Terminal avec la commande</p>
 <pre><code>git clone https://github.com/InseeFrLab/funathon2024_sujet3.git</code></pre>
-<p>Le projet a la structure suivante:</p>
+<p>Le projet a la structure suivante :</p>
 <ul>
-<li>Les fichiers <code>.qmd</code> ainsi que le fichier <code>_quarto.yaml</code> ont servi à la construction de ce site;</li>
-<li>Le fichier <code>requirements.txt</code> possède toutes les dépendances Python nécessaires pour le sujet;</li>
-<li>Plusieurs versions de l’application, à différents stades du développement, et à modifier lors des exercices sont situées dans les répertoire <code>intermediate_app</code>, <code>better_app</code>, <code>even_better_app</code> et <code>final_app</code>;<br>
+<li>Les fichiers <code>.qmd</code> ainsi que le fichier <code>_quarto.yaml</code> ont servi à la construction de ce site ;</li>
+<li>Le fichier <code>requirements.txt</code> possède toutes les dépendances Python nécessaires pour le sujet ;</li>
+<li>Plusieurs versions de l’application, à différents stades du développement, et à modifier lors des exercices sont situées dans les répertoire <code>intermediate_app</code>, <code>better_app</code>, <code>even_better_app</code> et <code>final_app</code> ;<br>
 </li>
-<li>Le corrigé (version finale) de l’application se trouve dans le répertoire <code>correction</code>;</li>
+<li>Le corrigé (version finale) de l’application se trouve dans le répertoire <code>correction</code> ;</li>
 <li>Le fichier <code>Dockerfile</code> et les fichiers du répertoire <code>kubernetes</code> serviront au déploiement de l’application.</li>
 </ul>
 </section>
